@@ -1,0 +1,16 @@
+{
+  "PacientId": 229721,
+  "PacientName": "Олег",
+  "PacientSurname": "Годовых",
+  "PacientLastName": "Олегович",
+  "PacientBirthday": "18.11.2006",
+  "PacientPhoneNumber": "89126865144",
+  "Appoitments": [
+    {
+      "Date": "",
+      "DoctorId": "",
+      "Diagnosis": "123",
+      "Recomendations": "1222"
+    }
+  ]
+}

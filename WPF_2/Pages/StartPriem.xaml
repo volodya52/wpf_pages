@@ -1,0 +1,78 @@
+﻿<Page x:Class="WPF_2.Pages.StartPriem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_2"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StartPriem">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="Прием пациента" Style="{DynamicResource PriemTextBlock}"/>
+        <WrapPanel Grid.Row="1" Style="{DynamicResource WrapPanelPriem}">
+            <TextBlock Text="Пациент:" Style="{DynamicResource PacientTextBlock}"/>
+            <TextBlock Text="{Binding CurrentPatient.PacientSurname}" Style="{DynamicResource NamePAcient}"/>
+            <TextBlock Text="{Binding CurrentPatient.PacientName}" Style="{DynamicResource SurnamePAcient}"/>
+            <TextBlock Text="{Binding CurrentPatient.PacientLastName}" Style="{DynamicResource LastNamePAcient}"/>
+            <TextBlock Text="Телефон:" Style="{DynamicResource PhoneTextBlock}"/>
+            <TextBlock Text="{Binding CurrentPatient.PacientPhoneNumber, StringFormat='{}{0:# (###) ### ## ##}'}"/>
+        </WrapPanel>
+
+       
+        <StackPanel Grid.Row="2" Orientation="Vertical">
+            <TextBlock Text="История приемов:" Style="{DynamicResource AppoitmentsStoryTextBlock}"/>
+            <ListView x:Name="AppointmentsListView" 
+                  ItemsSource="{Binding Appointments}" 
+                  Style="{DynamicResource AppoitmentsListView}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{DynamicResource ListViewBorder2}">
+                            <StackPanel>
+                                <WrapPanel>
+                                    <TextBlock Text="Дата:"  Style="{DynamicResource Data}"/>
+                                    <TextBlock Text="{Binding Date, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}" Style="{DynamicResource Data2}"/>
+                                    <TextBlock Text="Диагноз:" Style="{DynamicResource Diagnosis}"/>
+                                    <TextBlock Text="{Binding Diagnosis}" Style="{DynamicResource DiagnosisTextBlock}"/>
+                                </WrapPanel>
+                                <WrapPanel Style="{DynamicResource WrapPanelTextBlock}">
+                                    <TextBlock Text="Рекомендации:" Style="{DynamicResource Recomendations}"/>
+                                    <TextBlock Text="{Binding Recomendations}" Style="{DynamicResource Recomendations2}"/>
+                                </WrapPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+      
+        <StackPanel Grid.Row="3" Style="{DynamicResource StackPanelDiagnosis}">
+            <TextBlock Text="Диагноз:" Style="{DynamicResource Diagnosis2}"/>
+            <TextBox Text="{Binding NewAppointment.Diagnosis, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                Style="{DynamicResource DiagnosisTextBox}"/>
+        </StackPanel>
+
+      
+        <StackPanel Grid.Row="4" Style="{DynamicResource StackPanelRecomendations}">
+            <TextBlock Text="Рекомендации:" Style="{DynamicResource Recomendations3}"/>
+            <TextBox Text="{Binding NewAppointment.Recomendations, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 Style="{DynamicResource RecomendationsTextBox}"/>
+        </StackPanel>
+
+        <WrapPanel Grid.Row="5" Style="{DynamicResource WrapPanelWithButtons}">
+            <Button Content="Сохранить прием" Click="SaveAppointment_Click" Style="{DynamicResource SaveButton}"/>
+            <Button Content="Назад" Click="BackButton_Click" Style="{DynamicResource BackButton}"/>
+            <Button Content="Изменить информацию" Style="{DynamicResource EditButton}"/>
+            
+        </WrapPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,114 @@
+﻿<Page x:Class="WPF_2.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_2"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="970"
+      Title="MainPage">
+
+    <Page.Resources>
+        <local:UsersCount x:Key="CurrentCount"/>
+    </Page.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320*"/>
+            <ColumnDefinition Width="390*"/>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="110*"/>
+            <RowDefinition Height="180*"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Column="0" Grid.Row="5" Style="{DynamicResource InfoWrapPanel}">
+            <Label Content="Информация:" Style="{DynamicResource InfoLabel}"/>
+            <TextBlock Style="{DynamicResource Count}" Text="{Binding UserCountInfo.Count, Mode=OneWay}"/>
+            <Label Content="человек в системе" Style="{DynamicResource PeoplesCount}"/>
+        </WrapPanel>
+
+        <Border Style="{DynamicResource BorderMainPage}" Grid.Column="0" Grid.Row="4">
+            <StackPanel Style="{DynamicResource InfoStackPanel}">
+                <Grid Style="{DynamicResource NameGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Имя:" Grid.Column="0" Style="{DynamicResource NameLabel}"/>
+                    <TextBlock Text="{Binding CurrentDoctor.DoctorName}" Grid.Column="1"
+                       Style="{DynamicResource NameTextBlock}"/>
+                </Grid>
+                <Grid Style="{DynamicResource NameGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Фамилия:" Grid.Column="0" Style="{DynamicResource NameLabel}"/>
+                    <TextBlock Text="{Binding CurrentDoctor.DoctorSurname}" Grid.Column="1"
+                       Style="{DynamicResource SurnameTextBlock}"/>
+                </Grid>
+                <Grid Style="{DynamicResource NameGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Отчество:" Grid.Column="0" Style="{DynamicResource NameLabel}"/>
+                    <TextBlock Text="{Binding CurrentDoctor.DoctorLastName}" Grid.Column="1"
+                       Style="{DynamicResource LastNameTextBlock}"/>
+                </Grid>
+                <Grid Style="{DynamicResource NameGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Специальность:" Grid.Column="0" Style="{DynamicResource NameLabel}"/>
+                    <TextBlock Text="{Binding CurrentDoctor.DoctorSpeciality}" Grid.Column="1"
+                       Style="{DynamicResource SpecialityTextBlock}"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+        <WrapPanel Grid.Column="0" Grid.ColumnSpan="3" Style="{DynamicResource WrapPanelButtons}">
+            <Button Style="{DynamicResource AddButton}" Content="Создать пациента" Click="ButtonAddPacient"/>
+            <Button Style="{DynamicResource StartPriemButton}" Content="Начать прием" Click="Button_Click" />
+            <Button Style="{DynamicResource EditPacientButton}" Content="Изменить информацию" Click="RedactButton"/>
+            <Button Style="{DynamicResource SettingsButton}" Click="Button_Click_1">
+                Настройки
+            </Button>
+
+            <Button Style="{DynamicResource DeleteButtonStyle}"/>
+        </WrapPanel>
+        <ListView Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" 
+              Style="{DynamicResource MainListView}"
+              ItemsSource="{Binding Pacients}"
+              SelectedItem="{Binding SelectedPatient, Mode=TwoWay}"
+              MouseDoubleClick="ListView_MouseDoubleClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{DynamicResource ListViewBorder}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding PacientName}" Style="{DynamicResource TextBlockPacientName}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding PacientSurname}" Style="{DynamicResource TextBlockPacientSurname}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding PacientLastName}" Style="{DynamicResource TextBlockPacientLastName}"/>
+                            <TextBlock Grid.Column="3" Text="{Binding PacientPhoneNumber}" Style="{DynamicResource TextBlockPacientBirthday}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="Список пациентов:" Style="{DynamicResource ListPacient}"/>
+    </Grid>
+
+</Page>
+

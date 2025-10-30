@@ -1,0 +1,60 @@
+﻿<Page x:Class="WPF_2.Pages.Registration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_2.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="970"
+      Title="Registration">
+
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Style="{DynamicResource DoctorStackPanelLabel}">
+            <Label>
+                Имя
+            </Label>
+            <Label>
+                Фамилия
+            </Label>
+            <Label>
+                Отчество
+            </Label>
+            <Label>
+                Специальность
+            </Label>
+            <Label>
+                Пароль
+            </Label>
+        </StackPanel>
+
+        <StackPanel Style="{DynamicResource DoctorStackPanelTextBox}" Grid.Column="1">
+            <TextBox Text="{Binding DoctorName}"/>
+            <TextBox Text="{Binding DoctorSurname}"/>
+            <TextBox Text="{Binding DoctorLastName}"/>
+            <TextBox Text="{Binding DoctorSpeciality}"/>
+            <TextBox Text="{Binding DoctorPassword}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+            <Button Click="RegistrationButton" Style="{DynamicResource RegistrationButton}">
+                Зарегистрироваться
+            </Button>
+            <Button Click="Button_Click" Style="{DynamicResource SignInButton2}">
+                Войти
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</Page>

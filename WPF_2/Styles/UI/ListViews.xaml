@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="ListView">
+        <Setter Property="Background" Value="{DynamicResource ListView}"/>
+        <Setter Property="Height" Value="100"/>
+    </Style>
+
+    <Style x:Key="MainListView" TargetType="ListView">
+        <Setter Property="Height" Value="400"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Background" Value="{DynamicResource ListView}"/>
+        
+    </Style>
+
+    <Style x:Key="AppoitmentsListView" TargetType="ListView">
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="Background" Value="{DynamicResource ListView}"/>
+        <Setter Property="Width" Value="680"/>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <Color x:Key="PagesBackgroundColor">#66CDAA</Color>
+    <Color x:Key="BackgroundButtonColor">#008000</Color>
+    <Color x:Key="ButtonPressedColor">#808080</Color>
+    <Color x:Key="MouseOnButton">#00FF00</Color>
+    <Color x:Key="Delete">#FF0000</Color>
+    <Color x:Key="DeleteButton">#8B0000</Color>
+    <Color x:Key="DeletePressed">#B22222</Color>
+    <Color x:Key="BorderColor">#808080</Color>
+    <Color x:Key="TextColor">#000000</Color>
+    <Color x:Key="TextBoxColor">#D3D3D3</Color>
+    <Color x:Key="ListViewBackground">#D3D3D3</Color>
+    
+    <SolidColorBrush x:Key="Background" Color="{StaticResource PagesBackgroundColor}"/>
+    <SolidColorBrush x:Key="BackGroundButton" Color="{StaticResource BackgroundButtonColor}"/>
+    <SolidColorBrush x:Key="ButtonPressedBackground" Color="{StaticResource ButtonPressedColor}"/>
+    <SolidColorBrush x:Key="MouseButton" Color="{StaticResource MouseOnButton}"/>
+    <SolidColorBrush x:Key="DangerBrush" Color="{StaticResource Delete}"/>
+    <SolidColorBrush x:Key="TextBox" Color="{StaticResource TextBoxColor}"/>
+    <SolidColorBrush x:Key="DangerHoverBrush" Color="{StaticResource DeleteButton}"/>
+    <SolidColorBrush x:Key="DangerPressedBrush" Color="{StaticResource DeletePressed}"/>
+    <SolidColorBrush x:Key="TextColorChangeSolid" Color="{StaticResource TextColor}"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}"/>
+    <SolidColorBrush x:Key="ListView" Color="{StaticResource ListViewBackground}"/>
+</ResourceDictionary> 
