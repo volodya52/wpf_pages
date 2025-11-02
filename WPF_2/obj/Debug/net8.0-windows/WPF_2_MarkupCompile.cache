@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\st310-05\Desktop\lll\wpf_pages-main\WPF_2\obj\Debug\net8.0-windows\
+C:\Users\pluhi\OneDrive\Desktop\wpf_pages\WPF_2\obj\Debug\net8.0-windows\
 WPF_2
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\st310-05\Desktop\lll\wpf_pages-main\WPF_2\App.xaml
-19190714691
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\pluhi\OneDrive\Desktop\wpf_pages\WPF_2\App.xaml
+20387157031
 
-192143327029
-1981385397204
-MainWindow.xaml;Pages\AddPacient.xaml;Pages\MainPage.xaml;Pages\RedactPacient.xaml;Pages\RegistrationPage.xaml;Pages\Settings.xaml;Pages\SignInPage.xaml;Pages\StartPriem.xaml;Styles\Colors\DarkTheme.xaml;Styles\Colors\LightTheme.xaml;Styles\UI\Borders.xaml;Styles\UI\Buttons.xaml;Styles\UI\Grid.xaml;Styles\UI\Labels.xaml;Styles\UI\ListViews.xaml;Styles\UI\Panels.xaml;Styles\UI\StackPanels.xaml;Styles\UI\TextBlocks.xaml;Styles\UI\TextBoxes.xaml;
+20-1992579696
+198-2136442823
+MainWindow.xaml;Pages\AddPacient.xaml;Pages\MainPage.xaml;Pages\RedactPacient.xaml;Pages\RegistrationPage.xaml;Pages\Settings.xaml;Pages\SignInPage.xaml;Pages\StartPriem.xaml;Styles\Colors\DarkTheme.xaml;Styles\Colors\LightTheme.xaml;Styles\UI\Borders.xaml;Styles\UI\Buttons.xaml;Styles\UI\Grid.xaml;Styles\UI\ItemsControl.xaml;Styles\UI\Labels.xaml;Styles\UI\ListViews.xaml;Styles\UI\Panels.xaml;Styles\UI\StackPanels.xaml;Styles\UI\TextBlocks.xaml;Styles\UI\TextBoxes.xaml;
 
 False
 

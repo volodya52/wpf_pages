@@ -25,27 +25,29 @@
     </Style>
 
     <Style x:Key="DoctorStackPanelTextBox" TargetType="StackPanel">
-        <Setter Property="Height" Value="200"/>
+        <Setter Property="Height" Value="300"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="DoctorStackPanelLabel" TargetType="StackPanel">
-        <Setter Property="Height" Value="200"/>
+        <Setter Property="Height" Value="300"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="PacientStackPanelTextBox" TargetType="StackPanel">
-        <Setter Property="Height" Value="200"/>
+        <Setter Property="Height" Value="300"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="PacientStackPanelLabel" TargetType="StackPanel">
-        <Setter Property="Height" Value="200"/>
+        <Setter Property="Height" Value="300"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="WrapPanelSignIn" TargetType="WrapPanel">
         <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="WrapPanelPriem" TargetType="WrapPanel">

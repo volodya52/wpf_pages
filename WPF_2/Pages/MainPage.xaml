@@ -101,7 +101,7 @@
                             <TextBlock Grid.Column="0" Text="{Binding PacientName}" Style="{DynamicResource TextBlockPacientName}"/>
                             <TextBlock Grid.Column="1" Text="{Binding PacientSurname}" Style="{DynamicResource TextBlockPacientSurname}"/>
                             <TextBlock Grid.Column="2" Text="{Binding PacientLastName}" Style="{DynamicResource TextBlockPacientLastName}"/>
-                            <TextBlock Grid.Column="3" Text="{Binding PacientPhoneNumber}" Style="{DynamicResource TextBlockPacientBirthday}"/>
+                            <TextBlock Grid.Column="3" Text="{Binding PacientPhoneNumber, StringFormat={}{0:8 (000) 000 00 00}}" Style="{DynamicResource TextBlockPacientBirthday}" />
                         </Grid>
                     </Border>
                 </DataTemplate>

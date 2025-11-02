@@ -4,11 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPF_2"
+      xmlns:validators="clr-namespace:WPF_2.Validators"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RedactPacient">
 
-    
+
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,29 +18,113 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="250"/>
+            <RowDefinition Height="300"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+
         <StackPanel Style="{DynamicResource PacientStackPanelLabel}">
-            <Label Content="Имя пациента"/>
-            <Label Content="Фамилия пациента"/>
-            <Label Content="Отчество пациента"/>
-            <Label Content="Дата рождения"/>
-            <Label Content="Номер телефона"/>
-            
+            <Label Content="Имя пациента" Style="{DynamicResource PacientsLabels}"/>
+            <Label Content="Фамилия пациента" Style="{DynamicResource PacientsLabels}"/>
+            <Label Content="Отчество пациента" Style="{DynamicResource PacientsLabels}"/>
+            <Label Content="Дата рождения" Style="{DynamicResource PacientsLabels}"/>
+            <Label Content="Номер телефона" Style="{DynamicResource PacientsLabels}"/>
         </StackPanel>
+
         <StackPanel Style="{DynamicResource PacientStackPanelTextBox}" Grid.Column="1">
-            <TextBox Text="{Binding CurrentPacient.PacientName, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Text="{Binding CurrentPacient.PacientSurname, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Text="{Binding CurrentPacient.PacientLastName, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Text="{Binding CurrentPacient.PacientBirthday, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Text="{Binding CurrentPacient.PacientPhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="NameTextBox">
+                <TextBox.Text>
+                    <Binding Path="CurrentPacient.PacientName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl ItemsSource="{Binding ElementName=NameTextBox, Path=(Validation.Errors)}" 
+                     Style="{DynamicResource Errors}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" Style="{DynamicResource Errors}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBox x:Name="SurnameTextBox">
+                <TextBox.Text>
+                    <Binding Path="CurrentPacient.PacientSurname" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl ItemsSource="{Binding ElementName=SurnameTextBox, Path=(Validation.Errors)}" 
+                       Style="{DynamicResource Errors}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" FontSize="11" Margin="2,0"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBox x:Name="LastNameTextBox">
+                <TextBox.Text>
+                    <Binding Path="CurrentPacient.PacientLastName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl ItemsSource="{Binding ElementName=LastNameTextBox, Path=(Validation.Errors)}" 
+                      Style="{DynamicResource Errors}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" FontSize="11" Margin="2,0"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBox x:Name="BirthdayTextBox">
+                <TextBox.Text>
+                    <Binding Path="CurrentPacient.PacientBirthday" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl ItemsSource="{Binding ElementName=BirthdayTextBox, Path=(Validation.Errors)}" 
+                      Style="{DynamicResource Errors}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" FontSize="11" Margin="2,0"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBox x:Name="PhoneTextBox">
+                <TextBox.Text>
+                    <Binding Path="CurrentPacient.PacientPhoneNumber" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl ItemsSource="{Binding ElementName=PhoneTextBox, Path=(Validation.Errors)}" 
+                      Style="{DynamicResource Errors}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" FontSize="11" Margin="2,0"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
+
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-            <Button Content="Сохранить"  Click="SaveButton" Style="{DynamicResource SaveEditButton}"/>
+            <Button Content="Сохранить" Click="SaveButton" Style="{DynamicResource SaveEditButton}"/>
             <Button Content="Назад" Click="Button_Click" Style="{DynamicResource BAckButton2}"/>
         </StackPanel>
-        
-
     </Grid>
 </Page>

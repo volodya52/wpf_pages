@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPF_2.Pages"
+      xmlns:validators="clr-namespace:WPF_2.Validators"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SignInPage">
@@ -14,19 +15,50 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
 
         <WrapPanel Grid.Column="0" Grid.Row="0" Style="{DynamicResource WrapPanelSignIn}">
-           
             <Label Content="ID:" Style="{DynamicResource LabelID}"/>
-            <TextBox Style="{DynamicResource TextBoxID}" Text="{Binding DoctorId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="idTextBox" Style="{DynamicResource TextBoxID}">
+                <TextBox.Text>
+                    <Binding Path="DoctorId" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl ItemsSource="{Binding ElementName=idTextBox, Path=(Validation.Errors)}" 
+                      Margin="0,2,0,0">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" FontSize="11" Margin="2,0"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
             <Label Content="Пароль:" Style="{DynamicResource LabelPassword}"/>
-            <TextBox  Style="{DynamicResource PasswordTextBox}" Text="{Binding DoctorPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="passwordTextBox" Style="{DynamicResource PasswordTextBox}">
+                <TextBox.Text>
+                    <Binding Path="DoctorPassword" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl ItemsSource="{Binding ElementName=passwordTextBox, Path=(Validation.Errors)}" 
+                      Margin="0,2,0,0">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" Foreground="Red" FontSize="11" Margin="2,0"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
             <Button Click="SignIn" Content="Войти" Style="{DynamicResource SignInButton}"/>
         </WrapPanel>
-
-
     </Grid>
 </Page>

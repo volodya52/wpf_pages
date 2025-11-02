@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPF_2"
+      xmlns:validators="clr-namespace:WPF_2.Validators"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddPacient">
@@ -17,26 +18,113 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="350"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+
         <StackPanel Style="{DynamicResource PacientStackPanelLabel}">
-            <Label Content="Имя пациента"/>
-            <Label Content="Фамилия пациента"/>
-            <Label Content="Отчество пациента"/>
-            <Label Content="Дата рождения"/>
-            <Label Content="Номер телефона"/>
+            <Label Content="Имя пациента" Style="{DynamicResource PacientsLabels}"/>
+            <Label Content="Фамилия пациента" Style="{DynamicResource PacientsLabels}"/>
+            <Label Content="Отчество пациента" Style="{DynamicResource PacientsLabels}"/>
+            <Label Content="Дата рождения" Style="{DynamicResource PacientsLabels}"/>
+            <Label Content="Номер телефона" Style="{DynamicResource PacientsLabels}"/>
         </StackPanel>
+
         <StackPanel Style="{DynamicResource PacientStackPanelTextBox}" Grid.Column="1">
-            <TextBox Text="{Binding PacientName}"/>
-            <TextBox Text="{Binding PacientSurname}"/>
-            <TextBox Text="{Binding PacientLastName}"/>
-            <TextBox Text="{Binding PacientBirthday}"/>
-            <TextBox Text="{Binding PacientPhoneNumber}"/>
+            <TextBox x:Name="nameTextBox">
+                <TextBox.Text>
+                    <Binding Path="PacientName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Style="{DynamicResource Errors}"
+                  ItemsSource="{Binding ElementName=nameTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBox x:Name="surnameTextBox">
+                <TextBox.Text>
+                    <Binding Path="PacientSurname" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Style="{DynamicResource Errors}"
+                  ItemsSource="{Binding ElementName=surnameTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBox x:Name="lastNameTextBox">
+                <TextBox.Text>
+                    <Binding Path="PacientLastName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Style="{DynamicResource Errors}"
+                  ItemsSource="{Binding ElementName=lastNameTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBox x:Name="birthdayTextBox">
+                <TextBox.Text>
+                    <Binding Path="PacientBirthday" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Style="{DynamicResource Errors}"
+                  ItemsSource="{Binding ElementName=birthdayTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBox x:Name="phoneTextBox">
+                <TextBox.Text>
+                    <Binding Path="PacientPhoneNumber" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validators:RequiredRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ItemsControl Style="{DynamicResource Errors}"
+                  ItemsSource="{Binding ElementName=phoneTextBox, Path=(Validation.Errors)}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
+
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-            <Button Content="Сохранить"  Click="ButtonAddPacient" Style="{DynamicResource AddPAcientButton}"/>
-            <Button Content="Назад"  Click="BackButton" Style="{DynamicResource BAckButton3}"/>
+            <Button Content="Сохранить" Click="ButtonAddPacient" Style="{DynamicResource AddPAcientButton}"/>
+            <Button Content="Назад" Click="BackButton" Style="{DynamicResource BAckButton3}"/>
         </StackPanel>
     </Grid>
 </Page>

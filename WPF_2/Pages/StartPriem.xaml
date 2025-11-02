@@ -24,7 +24,7 @@
             <TextBlock Text="{Binding CurrentPatient.PacientName}" Style="{DynamicResource SurnamePAcient}"/>
             <TextBlock Text="{Binding CurrentPatient.PacientLastName}" Style="{DynamicResource LastNamePAcient}"/>
             <TextBlock Text="Телефон:" Style="{DynamicResource PhoneTextBlock}"/>
-            <TextBlock Text="{Binding CurrentPatient.PacientPhoneNumber, StringFormat='{}{0:# (###) ### ## ##}'}"/>
+            <TextBlock Text="{Binding CurrentPatient.PacientPhoneNumber, StringFormat='8 (###) ### ## ##'}"/>
         </WrapPanel>
 
        
