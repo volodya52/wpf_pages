@@ -12,11 +12,10 @@
         <local:UsersCount x:Key="CurrentCount"/>
     </Page.Resources>
 
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="320*"/>
-            <ColumnDefinition Width="390*"/>
+            <ColumnDefinition Width="450*"/>
             <ColumnDefinition Width="300*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -88,27 +87,17 @@
               ItemsSource="{Binding Pacients}"
               SelectedItem="{Binding SelectedPatient, Mode=TwoWay}"
               MouseDoubleClick="ListView_MouseDoubleClick">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Border Style="{DynamicResource ListViewBorder}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding PacientName}" Style="{DynamicResource TextBlockPacientName}"/>
-                            <TextBlock Grid.Column="1" Text="{Binding PacientSurname}" Style="{DynamicResource TextBlockPacientSurname}"/>
-                            <TextBlock Grid.Column="2" Text="{Binding PacientLastName}" Style="{DynamicResource TextBlockPacientLastName}"/>
-                            <TextBlock Grid.Column="3" Text="{Binding PacientPhoneNumber, StringFormat={}{0:8 (000) 000 00 00}}" Style="{DynamicResource TextBlockPacientBirthday}" />
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding PacientName}" Width="80"/>
+                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding PacientSurname}" Width="100"/>
+                    <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding PacientLastName}" Width="100"/>
+                    <GridViewColumn Header="Телефон" DisplayMemberBinding="{Binding PacientPhoneNumber, StringFormat={}{0:# (###) ### ## ##}}" Width="120"/>
+                    <GridViewColumn Header="Возраст" DisplayMemberBinding="{Binding Age}" Width="60"/>
+                    <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding IsAdultText}" Width="120"/>
+                </GridView>
+            </ListView.View>
         </ListView>
         <TextBlock Grid.Column="1" Grid.Row="0" Text="Список пациентов:" Style="{DynamicResource ListPacient}"/>
     </Grid>
-
 </Page>
-

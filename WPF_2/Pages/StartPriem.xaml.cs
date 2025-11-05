@@ -9,8 +9,6 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Json;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Unicode;
 using System.Threading.Tasks;
@@ -35,6 +33,7 @@ namespace WPF_2.Pages
         private Pacient _currentPatient;
         private Appoitments _newAppointment = new Appoitments();
         private ObservableCollection<Appoitments> _appointments = new ObservableCollection<Appoitments>();
+        private string _previousAppointmentInfo;
 
         public Pacient CurrentPatient
         {
@@ -63,6 +62,17 @@ namespace WPF_2.Pages
             {
                 _appointments = value;
                 OnPropertyChanged();
+                UpdatePreviousAppointmentInfo();
+            }
+        }
+
+        public string PreviousAppointmentInfo
+        {
+            get => _previousAppointmentInfo;
+            set
+            {
+                _previousAppointmentInfo = value;
+                OnPropertyChanged();
             }
         }
 
@@ -76,7 +86,6 @@ namespace WPF_2.Pages
             DataContext = this;
             Doctor = doctor;
 
-            
             NewAppointment.Date = DateTime.Now;
             NewAppointment.DoctorId = doctor.DoctorId.ToString();
 
@@ -92,6 +101,44 @@ namespace WPF_2.Pages
             else
             {
                 Appointments = new ObservableCollection<Appoitments>();
+            }
+
+            UpdatePreviousAppointmentInfo();
+        }
+
+        private void UpdatePreviousAppointmentInfo()
+        {
+            if (Appointments == null || Appointments.Count == 0)
+            {
+                PreviousAppointmentInfo = "Первый прием в клинике";
+                return;
+            }
+
+            
+            var previousAppointments = Appointments
+                .Where(a => a.Date.Date <= DateTime.Now.Date)
+                .OrderByDescending(a => a.Date)
+                .ToList();
+
+            if (previousAppointments.Count > 1)
+            {
+                
+                var lastAppointment = previousAppointments[1];
+                var daysSinceLastAppointment = (DateTime.Now - lastAppointment.Date).Days;
+
+                PreviousAppointmentInfo = $"Кол-во дней с предыдущего приема: {daysSinceLastAppointment}";
+            }
+            else if (previousAppointments.Count == 1)
+            {
+               
+                var lastAppointment = previousAppointments[0];
+                var daysSinceLastAppointment = (DateTime.Now - lastAppointment.Date).Days;
+
+                PreviousAppointmentInfo = $"Кол-во дней с предыдущего приема: {daysSinceLastAppointment}";
+            }
+            else
+            {
+                PreviousAppointmentInfo = "Первый прием в клинике";
             }
         }
 
@@ -123,7 +170,6 @@ namespace WPF_2.Pages
 
         private void SaveAppointment_Click(object sender, RoutedEventArgs e)
         {
-           
             if (string.IsNullOrWhiteSpace(NewAppointment.Diagnosis))
             {
                 MessageBox.Show("Введите диагноз");
@@ -132,20 +178,17 @@ namespace WPF_2.Pages
 
             var newAppointment = new Appoitments
             {
-                Date = NewAppointment.Date, 
+                Date = NewAppointment.Date,
                 DoctorId = Doctor.DoctorId.ToString(),
                 Diagnosis = NewAppointment.Diagnosis,
                 Recomendations = NewAppointment.Recomendations ?? string.Empty,
             };
 
-           
             LoadPatientDataFromFile();
 
-           
             if (CurrentPatient.Appoitments == null)
                 CurrentPatient.Appoitments = new ObservableCollection<Appoitments>();
 
-           
             CurrentPatient.Appoitments.Add(newAppointment);
             Appointments.Add(newAppointment);
 
@@ -158,9 +201,11 @@ namespace WPF_2.Pages
                 DoctorId = Doctor.DoctorId.ToString()
             };
 
-           
             OnPropertyChanged(nameof(NewAppointment));
             OnPropertyChanged(nameof(Appointments));
+
+           
+            UpdatePreviousAppointmentInfo();
         }
 
         private void SavePatientData()
@@ -199,4 +244,3 @@ namespace WPF_2.Pages
         }
     }
 }
-

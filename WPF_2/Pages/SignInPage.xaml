@@ -26,6 +26,7 @@
                     <Binding Path="DoctorId" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:NumericRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

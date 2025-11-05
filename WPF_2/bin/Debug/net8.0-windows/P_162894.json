@@ -1,0 +1,22 @@
+{
+  "pacientId": 162894,
+  "pacientName": "\u041F\u0430\u0432\u0435\u043B",
+  "pacientSurname": "\u041F\u0430\u0432\u043B\u043E\u0432",
+  "pacientLastName": "\u041F\u0430\u0432\u043B\u043E\u0432\u0438\u0447",
+  "pacientBirthday": "1993-02-04T00:00:00",
+  "pacientPhoneNumber": 89126865144,
+  "appoitments": [
+    {
+      "date": "2025-11-05T11:49:16.9635732+05:00",
+      "doctorId": "33023",
+      "diagnosis": "fdb",
+      "recomendations": "fdb"
+    },
+    {
+      "date": "2025-11-05T11:49:22.9273589+05:00",
+      "doctorId": "33023",
+      "diagnosis": "dvs",
+      "recomendations": "vds"
+    }
+  ]
+}

@@ -31,11 +31,12 @@
         </StackPanel>
 
         <StackPanel Style="{DynamicResource PacientStackPanelTextBox}" Grid.Column="1">
-            <TextBox>
+            <TextBox x:Name="NameTextBox">
                 <TextBox.Text>
                     <Binding Path="CurrentPacient.PacientName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -49,11 +50,12 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <TextBox>
+            <TextBox x:Name="SurnameTextBox">
                 <TextBox.Text>
                     <Binding Path="CurrentPacient.PacientSurname" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -67,11 +69,12 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <TextBox>
+            <TextBox x:Name="LastNameTextBox">
                 <TextBox.Text>
                     <Binding Path="CurrentPacient.PacientLastName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -85,11 +88,12 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <DatePicker>
+            <DatePicker x:Name="BirthdayDatePicker">
                 <DatePicker.SelectedDate>
                     <Binding Path="CurrentPacient.PacientBirthday" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                           
                         </Binding.ValidationRules>
                     </Binding>
                 </DatePicker.SelectedDate>
@@ -103,11 +107,12 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <TextBox>
+            <TextBox x:Name="PhoneTextBox">
                 <TextBox.Text>
                     <Binding Path="CurrentPacient.PacientPhoneNumber" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:NumericRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

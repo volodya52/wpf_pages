@@ -11,26 +11,34 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <TextBlock Grid.Row="0" Text="Прием пациента" Style="{DynamicResource PriemTextBlock}"/>
-        <WrapPanel Grid.Row="1" Style="{DynamicResource WrapPanelPriem}">
+        <Border Grid.Row="1" Style="{DynamicResource PreviousAppointmentBorder}" >
+            <TextBlock x:Name="PreviousAppointmentText" 
+                       Text="{Binding PreviousAppointmentInfo}"
+                       Style="{DynamicResource PreviousAppointmentTextBlock}"
+                       TextWrapping="Wrap"
+                       FontWeight="SemiBold"/>
+        </Border>
+        <WrapPanel Grid.Row="2" Style="{DynamicResource WrapPanelPriem}">
             <TextBlock Text="Пациент:" Style="{DynamicResource PacientTextBlock}"/>
             <TextBlock Text="{Binding CurrentPatient.PacientSurname}" Style="{DynamicResource NamePAcient}"/>
             <TextBlock Text="{Binding CurrentPatient.PacientName}" Style="{DynamicResource SurnamePAcient}"/>
             <TextBlock Text="{Binding CurrentPatient.PacientLastName}" Style="{DynamicResource LastNamePAcient}"/>
             <TextBlock Text="Телефон:" Style="{DynamicResource PhoneTextBlock}"/>
-            <TextBlock Text="{Binding CurrentPatient.PacientPhoneNumber, StringFormat='8 (###) ### ## ##'}"/>
+            <TextBlock Text="{Binding CurrentPatient.PacientPhoneNumber, StringFormat={}{0:# (###) ### ## ##}}"/>
         </WrapPanel>
 
-       
-        <StackPanel Grid.Row="2" Orientation="Vertical">
+
+        <StackPanel Grid.Row="3" Orientation="Vertical">
             <TextBlock Text="История приемов:" Style="{DynamicResource AppoitmentsStoryTextBlock}"/>
-            <ListView x:Name="AppointmentsListView" 
+            <ListView 
                   ItemsSource="{Binding Appointments}" 
                   Style="{DynamicResource AppoitmentsListView}">
                 <ListView.ItemTemplate>
@@ -54,25 +62,24 @@
             </ListView>
         </StackPanel>
 
-      
-        <StackPanel Grid.Row="3" Style="{DynamicResource StackPanelDiagnosis}">
+
+        <StackPanel Grid.Row="4" Style="{DynamicResource StackPanelDiagnosis}">
             <TextBlock Text="Диагноз:" Style="{DynamicResource Diagnosis2}"/>
             <TextBox Text="{Binding NewAppointment.Diagnosis, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 Style="{DynamicResource DiagnosisTextBox}"/>
         </StackPanel>
 
-      
-        <StackPanel Grid.Row="4" Style="{DynamicResource StackPanelRecomendations}">
-            <TextBlock Text="Рекомендации:" Style="{DynamicResource Recomendations3}"/>
+
+        <StackPanel Grid.Row="5" Style="{DynamicResource StackPanelRecomendations}">
+            <TextBlock Text="Рекомендации:" Style="{DynamicResource Recomendations2}"/>
             <TextBox Text="{Binding NewAppointment.Recomendations, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                  Style="{DynamicResource RecomendationsTextBox}"/>
         </StackPanel>
 
-        <WrapPanel Grid.Row="5" Style="{DynamicResource WrapPanelWithButtons}">
+        <WrapPanel Grid.Row="6" Style="{DynamicResource WrapPanelWithButtons}">
             <Button Content="Сохранить прием" Click="SaveAppointment_Click" Style="{DynamicResource SaveButton}"/>
             <Button Content="Назад" Click="BackButton_Click" Style="{DynamicResource BackButton}"/>
-            <Button Content="Изменить информацию" Style="{DynamicResource EditButton}"/>
-            
+            <Button Content="Изменить информацию" Style="{DynamicResource EditButton}" Click="Button_Click"/>
         </WrapPanel>
     </Grid>
 </Page>

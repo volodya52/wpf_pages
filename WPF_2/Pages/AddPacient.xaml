@@ -36,6 +36,7 @@
                     <Binding Path="PacientName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -54,6 +55,7 @@
                     <Binding Path="PacientSurname" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -72,6 +74,7 @@
                     <Binding Path="PacientLastName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -85,7 +88,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <!-- Заменен TextBox на DatePicker для даты рождения -->
             <DatePicker x:Name="birthdayDatePicker">
                 <DatePicker.SelectedDate>
                     <Binding Path="PacientBirthday" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
@@ -109,6 +111,7 @@
                     <Binding Path="PacientPhoneNumber" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:NumericRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

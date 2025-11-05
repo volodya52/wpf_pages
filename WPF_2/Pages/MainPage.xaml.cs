@@ -63,7 +63,11 @@ namespace WPF_2.Pages
                 {
                     if (patient.Appoitments == null)
                         patient.Appoitments = new ObservableCollection<Appoitments>();
-                   Pacients.Add(patient);
+
+                    patient.OnPropertyChanged(nameof(patient.Age));
+                    patient.OnPropertyChanged(nameof(patient.IsAdult));
+                    patient.OnPropertyChanged(nameof(patient.IsAdultText));
+                    Pacients.Add(patient);
                 }     
             }
                 OnPropertyChanged(nameof(Pacients));

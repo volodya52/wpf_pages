@@ -36,6 +36,7 @@
                     <Binding Path="DoctorName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -54,6 +55,7 @@
                     <Binding Path="DoctorSurname" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -72,6 +74,7 @@
                     <Binding Path="DoctorLastName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -90,6 +93,7 @@
                     <Binding Path="DoctorSpeciality" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
+                            <validators:LettersRule/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

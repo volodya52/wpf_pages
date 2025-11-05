@@ -16,8 +16,8 @@ namespace WPF_2
         private string _name = "";
         private string _surname = "";
         private string _lastName = "";
-        private DateTime _birthday = DateTime.Now; 
-        private string _phoneNumber = "";
+        private DateTime _birthday = DateTime.Now;
+        private long _phoneNumber;
         private ObservableCollection<Appoitments> _appoitments = new ObservableCollection<Appoitments>();
 
         public int PacientId
@@ -65,7 +65,7 @@ namespace WPF_2
             }
         }
 
-        public DateTime PacientBirthday 
+        public DateTime PacientBirthday
         {
             get => _birthday;
             set
@@ -74,11 +74,14 @@ namespace WPF_2
                 {
                     _birthday = value;
                     OnPropertyChanged();
+                    OnPropertyChanged(nameof(Age));
+                    OnPropertyChanged(nameof(IsAdult));
+                    OnPropertyChanged(nameof(IsAdultText));
                 }
             }
         }
 
-        public string PacientPhoneNumber
+        public long PacientPhoneNumber
         {
             get => _phoneNumber;
             set
@@ -104,9 +107,33 @@ namespace WPF_2
             }
         }
 
+        [JsonIgnore]
+        public int Age
+        {
+            get
+            {
+                var today = DateTime.Today;
+                var age = today.Year - PacientBirthday.Year;
+                if (PacientBirthday.Date > today.AddYears(-age)) age--;
+                return age;
+            }
+        }
+
+        [JsonIgnore]
+        public bool IsAdult
+        {
+            get => Age >= 18;
+        }
+
+        [JsonIgnore]
+        public string IsAdultText
+        {
+            get => IsAdult ? "Совершеннолетний" : "Несовершеннолетний";
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string? propName = null)
+        public void OnPropertyChanged([CallerMemberName] string? propName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
