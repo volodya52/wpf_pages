@@ -85,17 +85,18 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <TextBox x:Name="birthdayTextBox">
-                <TextBox.Text>
+            <!-- Заменен TextBox на DatePicker для даты рождения -->
+            <DatePicker x:Name="birthdayDatePicker">
+                <DatePicker.SelectedDate>
                     <Binding Path="PacientBirthday" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
+                </DatePicker.SelectedDate>
+            </DatePicker>
             <ItemsControl Style="{DynamicResource Errors}"
-                  ItemsSource="{Binding ElementName=birthdayTextBox, Path=(Validation.Errors)}">
+                  ItemsSource="{Binding ElementName=birthdayDatePicker, Path=(Validation.Errors)}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"/>

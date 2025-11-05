@@ -31,7 +31,7 @@
         </StackPanel>
 
         <StackPanel Style="{DynamicResource PacientStackPanelTextBox}" Grid.Column="1">
-            <TextBox x:Name="NameTextBox">
+            <TextBox>
                 <TextBox.Text>
                     <Binding Path="CurrentPacient.PacientName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
@@ -44,12 +44,12 @@
                      Style="{DynamicResource Errors}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding ErrorContent}" Style="{DynamicResource Errors}"/>
+                        <TextBlock Text="{Binding ErrorContent}" Style="{DynamicResource Errors2}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <TextBox x:Name="SurnameTextBox">
+            <TextBox>
                 <TextBox.Text>
                     <Binding Path="CurrentPacient.PacientSurname" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
@@ -67,7 +67,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <TextBox x:Name="LastNameTextBox">
+            <TextBox>
                 <TextBox.Text>
                     <Binding Path="CurrentPacient.PacientLastName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
@@ -85,16 +85,16 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <TextBox x:Name="BirthdayTextBox">
-                <TextBox.Text>
+            <DatePicker>
+                <DatePicker.SelectedDate>
                     <Binding Path="CurrentPacient.PacientBirthday" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
-            <ItemsControl ItemsSource="{Binding ElementName=BirthdayTextBox, Path=(Validation.Errors)}" 
+                </DatePicker.SelectedDate>
+            </DatePicker>
+            <ItemsControl ItemsSource="{Binding ElementName=BirthdayDatePicker, Path=(Validation.Errors)}" 
                       Style="{DynamicResource Errors}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -103,7 +103,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <TextBox x:Name="PhoneTextBox">
+            <TextBox>
                 <TextBox.Text>
                     <Binding Path="CurrentPacient.PacientPhoneNumber" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>

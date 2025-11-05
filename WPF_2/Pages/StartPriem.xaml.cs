@@ -75,6 +75,11 @@ namespace WPF_2.Pages
             CurrentPatient = patient;
             DataContext = this;
             Doctor = doctor;
+
+            
+            NewAppointment.Date = DateTime.Now;
+            NewAppointment.DoctorId = doctor.DoctorId.ToString();
+
             LoadAppointments();
         }
 
@@ -118,7 +123,7 @@ namespace WPF_2.Pages
 
         private void SaveAppointment_Click(object sender, RoutedEventArgs e)
         {
-            // Проверяем, что диагноз не пустой
+           
             if (string.IsNullOrWhiteSpace(NewAppointment.Diagnosis))
             {
                 MessageBox.Show("Введите диагноз");
@@ -127,29 +132,33 @@ namespace WPF_2.Pages
 
             var newAppointment = new Appoitments
             {
-                Date = NewAppointment.Date, // Исправлено: устанавливаем текущую дату
+                Date = NewAppointment.Date, 
+                DoctorId = Doctor.DoctorId.ToString(),
                 Diagnosis = NewAppointment.Diagnosis,
                 Recomendations = NewAppointment.Recomendations ?? string.Empty,
             };
 
-            // Загружаем текущие данные из файла
+           
             LoadPatientDataFromFile();
 
-            // Убеждаемся, что коллекция пациента инициализирована
+           
             if (CurrentPatient.Appoitments == null)
                 CurrentPatient.Appoitments = new ObservableCollection<Appoitments>();
 
-            // Добавляем новое посещение
+           
             CurrentPatient.Appoitments.Add(newAppointment);
             Appointments.Add(newAppointment);
 
             MessageBox.Show("Прием добавлен");
             SavePatientData();
 
-            // Очищаем форму
-            NewAppointment = new Appoitments();
+            NewAppointment = new Appoitments
+            {
+                Date = DateTime.Now,
+                DoctorId = Doctor.DoctorId.ToString()
+            };
 
-            // Обновляем привязки
+           
             OnPropertyChanged(nameof(NewAppointment));
             OnPropertyChanged(nameof(Appointments));
         }

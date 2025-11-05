@@ -1,0 +1,22 @@
+{
+  "pacientId": 142593,
+  "pacientName": "g",
+  "pacientSurname": "g",
+  "pacientLastName": "g",
+  "pacientBirthday": "2000-02-11T00:00:00",
+  "pacientPhoneNumber": "89126865144",
+  "appoitments": [
+    {
+      "date": "2025-11-05T10:51:01.0476914+05:00",
+      "doctorId": "33023",
+      "diagnosis": "acs",
+      "recomendations": "cas"
+    },
+    {
+      "date": "2025-11-05T10:52:02.9573409+05:00",
+      "doctorId": "33023",
+      "diagnosis": "xcz",
+      "recomendations": "cxz"
+    }
+  ]
+}

@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace WPF_2
 {
-    public class Appoitments:INotifyPropertyChanged
+    public class Appoitments : INotifyPropertyChanged
     {
-        private string _date = "";
+        private DateTime _date = DateTime.Now;
         private string _doctorId = "";
         private string _diagnosis = "";
         private string _recomendations = "";
-
-        public string Date
+        public DateTime Date 
         {
             get => _date;
             set
@@ -23,7 +22,7 @@ namespace WPF_2
                 if (_date != value)
                 {
                     _date = value;
-                    OnPropertyChanged( );
+                    OnPropertyChanged();
                 }
             }
         }
@@ -36,7 +35,7 @@ namespace WPF_2
                 if (_doctorId != value)
                 {
                     _doctorId = value;
-                    OnPropertyChanged( );
+                    OnPropertyChanged();
                 }
             }
         }
@@ -49,7 +48,7 @@ namespace WPF_2
                 if (_diagnosis != value)
                 {
                     _diagnosis = value;
-                    OnPropertyChanged( );
+                    OnPropertyChanged();
                 }
             }
         }
@@ -62,14 +61,14 @@ namespace WPF_2
                 if (_recomendations != value)
                 {
                     _recomendations = value;
-                    OnPropertyChanged( );
+                    OnPropertyChanged();
                 }
             }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected void OnPropertyChanged ([CallerMemberName] string? propName = null)
+        protected void OnPropertyChanged([CallerMemberName] string? propName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

@@ -11,15 +11,15 @@ using System.Threading.Tasks;
 
 namespace WPF_2
 {
-    public class Pacient: INotifyPropertyChanged
+    public class Pacient : INotifyPropertyChanged
     {
-        private string _name = ""; 
-        private string _surname = ""; 
-        private string _lastName = ""; 
-        private string _birthday = ""; 
+        private string _name = "";
+        private string _surname = "";
+        private string _lastName = "";
+        private DateTime _birthday = DateTime.Now; 
         private string _phoneNumber = "";
-        private ObservableCollection<Appoitments> _appoitments = new ObservableCollection<Appoitments>( );
-        
+        private ObservableCollection<Appoitments> _appoitments = new ObservableCollection<Appoitments>();
+
         public int PacientId
         {
             get;
@@ -65,7 +65,7 @@ namespace WPF_2
             }
         }
 
-        public string PacientBirthday
+        public DateTime PacientBirthday 
         {
             get => _birthday;
             set
@@ -77,6 +77,7 @@ namespace WPF_2
                 }
             }
         }
+
         public string PacientPhoneNumber
         {
             get => _phoneNumber;
@@ -98,7 +99,7 @@ namespace WPF_2
                 if (_appoitments != value)
                 {
                     _appoitments = value;
-                    OnPropertyChanged( );
+                    OnPropertyChanged();
                 }
             }
         }
@@ -109,6 +110,5 @@ namespace WPF_2
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
-
     }
 }
