@@ -33,7 +33,7 @@
         <StackPanel Style="{DynamicResource PacientStackPanelTextBox}" Grid.Column="1">
             <TextBox x:Name="NameTextBox">
                 <TextBox.Text>
-                    <Binding Path="CurrentPacient.PacientName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                    <Binding Path="CurrentPacient.PacientName" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
                             <validators:LettersRule/>
@@ -52,7 +52,7 @@
 
             <TextBox x:Name="SurnameTextBox">
                 <TextBox.Text>
-                    <Binding Path="CurrentPacient.PacientSurname" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                    <Binding Path="CurrentPacient.PacientSurname" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
                             <validators:LettersRule/>
@@ -71,7 +71,7 @@
 
             <TextBox x:Name="LastNameTextBox">
                 <TextBox.Text>
-                    <Binding Path="CurrentPacient.PacientLastName" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                    <Binding Path="CurrentPacient.PacientLastName" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
                             <validators:LettersRule/>
@@ -90,7 +90,7 @@
 
             <DatePicker x:Name="BirthdayDatePicker">
                 <DatePicker.SelectedDate>
-                    <Binding Path="CurrentPacient.PacientBirthday" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                    <Binding Path="CurrentPacient.PacientBirthday" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
                            
@@ -109,7 +109,7 @@
 
             <TextBox x:Name="PhoneTextBox">
                 <TextBox.Text>
-                    <Binding Path="CurrentPacient.PacientPhoneNumber" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                    <Binding Path="CurrentPacient.PacientPhoneNumber" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validators:RequiredRule/>
                             <validators:NumericRule/>

@@ -17,6 +17,18 @@
       "doctorId": "33023",
       "diagnosis": "dvs",
       "recomendations": "vds"
+    },
+    {
+      "date": "2025-11-06T12:05:45.7335803+05:00",
+      "doctorId": "33023",
+      "diagnosis": "\u0418\u043C\u043F\u043E\u0442\u0435\u043D\u0446\u0438\u044F",
+      "recomendations": "\u043D\u0435 \u0437\u043D\u0430\u044E \u044F \u043D\u0435 \u0432\u0440\u0430\u0447"
+    },
+    {
+      "date": "2025-11-06T13:21:25.6411667+05:00",
+      "doctorId": "33023",
+      "diagnosis": "d",
+      "recomendations": "d"
     }
   ]
 }
